@@ -1,46 +1,40 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Chaplin documentation
+tagline: An Application Architecture Using Backbone.js
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+# Changelog
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
+----------------------------------
+## [0.3](https://github.com/chaplinjs/chaplin/tree/0.3)
 
-## Update Author Attributes
+Date: 2012-03-23
 
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
+Commit: [1dad18c38c](https://github.com/chaplinjs/chaplin/commit/1dad18c38c)
 
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
+- Bug fix: In CollectionView, get the correct item position when rendering
+  the item view. Fixes the rendering of sorted Collections. Before the fix,
+  the item views might have been displayed in the wrong order.
 
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
+----------------------------------
+## [0.2](https://github.com/chaplinjs/chaplin/tree/0.2)
 
-    $ rm -rf _posts/core-samples
+Date: 2012-03-09
 
-Here's a sample "posts list".
+Commit: [4a66c8a581](https://github.com/chaplinjs/chaplin/commit/4a66c8a581)
 
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+- Bug fix: Correctly unsubscribe global handlers when disposing a collection
+- Code formatting
 
-## To-Do
+----------------------------------
+## [0.1](https://github.com/chaplinjs/chaplin/tree/0.1)
 
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
+Date: 2012-02-26
 
+Commit: [f6ba02b4f3](https://github.com/chaplinjs/chaplin/commit/f6ba02b4f3)
 
+Initial release
+
+----------------------------------

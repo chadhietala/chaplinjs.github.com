@@ -1,0 +1,9 @@
+
+<p class="version-switcher">
+  Switch to a different version:
+  {% for version in site.versions %}
+    {% if page.version != version[0] %}
+      <a href="{{ version[0] | version_url }}" class="active">{{ version[0] }}</a>
+    {% endif %}
+  {% endfor %}
+</p>

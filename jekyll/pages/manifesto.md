@@ -1,4 +1,4 @@
----
+  ---
 layout: page
 title: Manifesto
 tagline: Why Chaplin was created
@@ -168,7 +168,6 @@ Chaplin.mediator.subscribe 'login', @doSomething
 A Publish/Subscribe message consists of a name and optional data. For example, the module in charge of handling the login might publish a message with the identifer `login` and the `user` object as additional data:
 
 ```
-# Publish a global login event
 mediator.publish 'login', user
 ```
 

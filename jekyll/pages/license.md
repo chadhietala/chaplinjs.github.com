@@ -1,4 +1,9 @@
-# License
+---
+layout: page
+title: License
+tagline: How you can use Chaplin
+group: navigation
+---
 
 Chaplin is free and Open Source under the simple and permissive MIT license:
 

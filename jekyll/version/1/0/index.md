@@ -5,7 +5,6 @@ header: Chaplin 1.0.*
 group: documentation
 version: 1.0
 ---
-{% include JB/setup %}
 
 # Mediator
 

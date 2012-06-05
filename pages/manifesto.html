@@ -57,12 +57,24 @@
     
       
       	
+      	<li><a href="/pages/changelogs.html">Changelogs</a></li>
+      	
+      
+    
+  
+    
+      
+      	
       	<li class="active"><a href="/pages/manifesto.html" class="active">Manifesto</a></li>
       	
       
     
   
     
+      
+      	
+      	<li><a href="/pages/license.html">License</a></li>
+      	
       
     
   
@@ -277,7 +289,6 @@ Chaplin.mediator.subscribe 'login', @doSomething
 <p>A Publish/Subscribe message consists of a name and optional data. For example, the module in charge of handling the login might publish a message with the identifer <code>login</code> and the <code>user</code> object as additional data:</p>
 
 <p><code>
-# Publish a global login event
 mediator.publish 'login', user
 </code></p>
 

@@ -5,8 +5,13 @@ tagline: An Application Architecture Using Backbone.js
 ---
 
 
-
 ## Changelogs
+
+----------------------------------
+
+### [1.0](https://github.com/chaplinjs/chaplin/tree/1.0) - [Read the documentation]({{ "1.0" | version_url }})
+
+TODO
 
 ----------------------------------
 
@@ -22,7 +27,7 @@ tagline: An Application Architecture Using Backbone.js
 
 ----------------------------------
 
-### [0.2](https://github.com/chaplinjs/chaplin/tree/0.2) - [Read the documentation]({{ "0.2" | version_url }})
+### [0.2](https://github.com/chaplinjs/chaplin/tree/0.2)
 
 **Date:** 2012-03-09
 

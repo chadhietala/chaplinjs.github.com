@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Chaplin 0.2.*
-header: Chaplin 0.2.*
+title: Chaplin 1.0.*
+header: Chaplin 1.0.*
 group: documentation
-version: 0.2
+version: 1.0
 ---
 {% include JB/setup %}
 

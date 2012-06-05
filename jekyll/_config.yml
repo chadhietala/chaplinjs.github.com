@@ -29,9 +29,8 @@ tagline: An Application Architecture Using Backbone.js
 #
 production_url : http://chaplinjs.github.com
 
-current_version: '0.3'
+current_version: '1.0'
 
 versions:
-  '0.2': '/0/2/'
   '0.3': '/0/3/'
-  '0.4': '/0/4/'
+  '1.0': '/1/0/'

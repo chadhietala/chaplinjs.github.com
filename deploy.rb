@@ -9,6 +9,7 @@ puts 'Remove old generated files ================='
  ! -name deploy.rb \
  ! -name ".git*" \
  ! -name "README.md" \
+ ! -name ".nojekyll" \
  -delete`
 
 puts "\nCopy new generated files ==================="

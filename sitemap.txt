@@ -1,5 +1,17 @@
 
-http://chaplinjs.github.com/pages/docs.html
+http://chaplinjs.github.com/docs/controller.html
+http://chaplinjs.github.com/docs/dispatcher.html
+http://chaplinjs.github.com/docs/router.html
+http://chaplinjs.github.com/docs/index.html
+http://chaplinjs.github.com/docs/view.html
+http://chaplinjs.github.com/docs/mediator.html
+http://chaplinjs.github.com/docs/collectionview.html
+http://chaplinjs.github.com/docs/setup.html
+http://chaplinjs.github.com/docs/gettingstarted.html
+http://chaplinjs.github.com/docs/disposal.html
+http://chaplinjs.github.com/docs/application.html
+http://chaplinjs.github.com/docs/layout.html
+http://chaplinjs.github.com/docs/overview.html
 http://chaplinjs.github.com/pages/authors.html
 http://chaplinjs.github.com/pages/changelogs.html
 http://chaplinjs.github.com/pages/manifesto.html

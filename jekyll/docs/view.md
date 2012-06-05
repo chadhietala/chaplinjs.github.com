@@ -1,5 +1,5 @@
 ---
 layout: page
-title: Layout
+title: View
 tagline: " - API documentation"
 ---

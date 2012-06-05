@@ -1,1 +1,5 @@
-<router class="md"></router>
+---
+layout: page
+title: Router
+tagline: " - API documentation"
+---

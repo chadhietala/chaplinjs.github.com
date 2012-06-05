@@ -1,10 +1,13 @@
+---
+layout: page
+title: Getting started
+tagline: " - General documentation"
+---
+
 # Download
 
 
-
 # Dependencies
-
-#
 
 Chaplin depends on the following libraries:
 

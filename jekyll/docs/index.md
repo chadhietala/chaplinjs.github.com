@@ -13,7 +13,7 @@ group: navigation
 
 ## API docs
 
-* [Mediator](/docs/application.html)
+* [Mediator](/docs/mediator.html)
 * [Application](/docs/application.html)
 * [Router](/docs/router.html)
 * [Dispatcher](/docs/application.html)

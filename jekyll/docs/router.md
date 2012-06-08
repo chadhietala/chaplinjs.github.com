@@ -44,3 +44,43 @@ __pattern:__ A url pattern to match against the current URL.
 __target:__ The controller and the action you want to execute on it.
 
 __options:__ Optional object to be passed to the Routes object
+
+## route(path)
+
+Route a given path manually. Returns a boolean after it has been matched against handlers in Backbone.history.handlers.  This looks quite like Backbone.history.loadUrl, but it accepts an absolute URL with a leading slash (e.g. /foo) and passes a changeURL parameter to the callback function.
+
+### Parameters:
+
+__path:__ An absolute URL with a leading slash.
+
+## routeHandler(path, callback)
+
+When the globalized `!router:route` event is emitted call the callback associated with the route.
+
+### Parameters:
+
+__path:__ An absolute URL with a leading slash.
+
+__callback:__ A callback to call when routed.
+
+## changeURL(url)
+
+Changes the current URL and adds a history entry.  Does not trigger any routes.
+
+### Parameters:
+
+__url:__ String that is going to be pushed as the pages url.
+
+## changeURLHandler(url)
+
+Handler for the globalized `!router:changeURL` event.  Calls `@changeURL`.
+
+### Parameters:
+
+__url:__ String that is going to be pushed as the pages url.
+
+## dispose
+
+Stops the Backbone.history instance and removes it from the Router object.  Also unsubscribes any events attached to the Router.  Attempts to freeze the Router to prevent any changes to the Router. See [Object.freeze](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/freeze).
+
+

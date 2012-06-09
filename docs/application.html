@@ -185,26 +185,132 @@
 
 <div class="row">
   <div class="span12">
-    <h2 id="methods-of-chaplinapplication">Methods of <code>Chaplin.Application</code></h2>
+    <p>The <code>Chaplin.Application</code> is a bootstrapper which provides methods to start other core modules as needed:
+* <code>Router</code>
+* <code>Dispatcher</code>
+* <code>Layout</code></p>
 
-<h3 id="method1arg1-optionalarg-args">method1(arg1, [optional_arg], [*args])</h3>
-<p>Lorem</p>
+<h2 id="methods-of-chaplinapplication">Methods of <code>Chaplin.Application</code></h2>
+
+<h3 id="initdispatcheroptions">initDispatcher([options={}])</h3>
+<p>Initialize <code>Chaplin.Dispatcher</code>. <a href="/docs/dispatcher.html">Chaplin.Dispatcher documentation</a></p>
 
 <hr />
 
-<h3 id="method2">method2()</h3>
-<p>Lorem</p>
+<h3 id="initlayoutoptions">initLayout([options={}])</h3>
+<p>Initialize <code>Chaplin.Layout</code>. <a href="/docs/layout.html">Chaplin.Layout documentation</a></p>
+
+<hr />
+
+<h3 id="initrouterroutes-options">initRouter(routes, [options={}])</h3>
+<p>Initialize <code>Chaplin.Router</code>. <a href="/docs/router.html">Chaplin.Router documentation</a></p>
 
 <h2 id="usage">Usage</h2>
+<p>The <code>Chaplin.Application</code> is intended to be extended by your Application. The <code>initialize</code> method instanciate the <code>Chaplin.Dispatcher</code>, <code>Chaplin.Layout</code> and <code>Chaplin.Router</code> by calling the <code>Chaplin.Application.init*</code> methods:</p>
+
+<pre><code>define [
+  'chaplin',
+  'routes'
+], (Chaplin, routes) -&gt;
+  'use strict'
+
+  class MyApplication extends Chaplin.Application
+
+    title: 'The title for your application'
+
+    initialize: -&gt;
+      super
+
+      # Initialize core components
+      @initDispatcher()
+      @initLayout()
+      @initRouter routes
+</code></pre>
+
+<p>In this exemple, we don’t extend the Layout but it is likely that you will need to. In this case, you will load it as a dependency and overwrite the <code>initLayout</code> (or skip it):</p>
+
+<pre><code>define [
+  'chaplin',
+  'views/layout' # our extend Layout
+], (Chaplin, Layout) -&gt;
+  'use strict'
+
+  class MyApplication extends Chaplin.Application
+
+    title: 'The title for your application'
+
+    initialize: -&gt;
+      # ...
+
+      @layout = new Layout {@title} # option 1: instanciate directly the Layout
+      # OR
+      @initLayout()                 # option 2: we still call initLayout...
+
+    initLayout: -&gt;                  #           ... and overwrite it to load the good Layout
+      @layout = new Layout {@title}
+</code></pre>
 
 <h2 id="dependencies">Dependencies</h2>
 <ul>
-  <li>``</li>
-  <li>``</li>
+  <li><code>chaplin/mediator</code></li>
+  <li><code>chaplin/dispatcher</code></li>
+  <li><code>chaplin/views/layout</code></li>
+  <li><code>chaplin/lib/router</code></li>
 </ul>
 
 <h2 id="code">Code</h2>
 <pre><code class="coffeescript">
+    class Application
+
+      # The site title used in the document title
+      title: ''
+
+      # The application instantiates these three core modules
+      dispatcher: null
+      layout: null
+      router: null
+
+      initialize: -&gt;
+
+      initDispatcher: (options) -&gt;
+        @dispatcher = new Dispatcher options
+
+      initLayout: (options = {}) -&gt;
+        options.title ?= @title
+        @layout = new Layout options
+
+      # Instantiate the dispatcher
+      # --------------------------
+
+      # Pass the function typically returned by routes.coffee
+      initRouter: (routes, options) -&gt;
+        # Save the reference for testing introspection only.
+        # Modules should communicate with each other via Pub/Sub.
+        @router = new Router options
+
+        # Register all routes declared in routes.coffee
+        routes? @router.match
+
+        # After registering the routes, start Backbone.history
+        @router.startHistory()
+
+      # Disposal
+      # --------
+
+      disposed: false
+
+      dispose: -&gt;
+        return if @disposed
+
+        properties = ['dispatcher', 'layout', 'router']
+        for prop in properties
+          this[prop].dispose()
+          delete this[prop]
+
+        @disposed = true
+
+        # You’re frozen when your heart’s not open
+        Object.freeze? this
 </code></pre>
 
   </div>

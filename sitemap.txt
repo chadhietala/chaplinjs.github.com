@@ -10,6 +10,7 @@ http://chaplinjs.github.com/docs/setup.html
 http://chaplinjs.github.com/docs/gettingstarted.html
 http://chaplinjs.github.com/docs/disposal.html
 http://chaplinjs.github.com/docs/application.html
+http://chaplinjs.github.com/docs/subscriber.html
 http://chaplinjs.github.com/docs/layout.html
 http://chaplinjs.github.com/docs/overview.html
 http://chaplinjs.github.com/pages/authors.html

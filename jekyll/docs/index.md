@@ -15,7 +15,7 @@ group: navigation
 
 ### Core
 * [Mediator](/docs/mediator.html)
-* [Dispatcher](/docs/application.html)
+* [Dispatcher](/docs/dispatcher.html)
 * [Application](/docs/application.html)
 * [Router](/docs/router.html)
 

@@ -6,9 +6,9 @@ tagline: " - API documentation"
 
 As all modules are encapsulated and independent from each other, we need a way to make them communicate. That's the Mediator's role. The Mediator implement the [Publish/Subscribe](http://en.wikipedia.org/wiki/Publish/subscribe) (Pub/Sub) pattern to ensure loose coupling of application modules.
 
-To inform other modules that something happened, a module doesn’t send messages directly (i.e. calling methods of specific objects). Instead, it publishes a message to a central channel without having to know who is listening. Other application modules might subscribe to these messages and react upon them.
+To inform other modules that something happened, a module doesn’t send messages directly (i.e. calling methods of specific objects). Instead, it publishes a message to the mediator without having to know who is listening. Other application modules might subscribe to these messages and react upon them.
 
-If you want to give Pub/Sub functionality to a Class, also look at the [Subscriber](/docs/subscriber.html).
+Note: If you want to give Pub/Sub functionality to a Class, also look at the [Subscriber](/docs/subscriber.html).
 
 
 ## Methods of `Chaplin.mediator`

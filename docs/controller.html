@@ -60,6 +60,14 @@
 
   
     
+  
+
+  
+    
+  
+
+  
+    
     	
     	<li><a href="/docs/index.html">Docs</a></li>
     	
@@ -132,9 +140,9 @@
 
   
     
-    	
-    	<li><a href="/pages/license.html">License</a></li>
-    	
+  
+
+  
     
   
 
@@ -172,6 +180,21 @@
   <h1>Chaplin.Controller  <small> - API documentation</small></h1>
 
   
+    
+<p class="version-switcher">
+  Switch to a different version:
+  
+    
+      <a href="/version/0/3/" class="active">0.3</a>
+    
+  
+    
+      <a href="/version/1/0/" class="active">1.0</a>
+    
+  
+</p>
+  
+
 </div>
 
 <div class="row">
@@ -190,12 +213,58 @@
 
 <h2 id="dependencies">Dependencies</h2>
 <ul>
-  <li>``</li>
-  <li>``</li>
+  <li><code>underscore</code></li>
+  <li><code>chaplin/lib/subscriber</code></li>
 </ul>
 
 <h2 id="code">Code</h2>
 <pre><code class="coffeescript">
+    class Controller
+
+      # Mixin a Subscriber
+      _(@prototype).extend Subscriber
+
+      view: null
+      currentId: null
+
+      # You should set a title property and a historyURL property or method
+      # on the derived controller. Like this:
+      # title: 'foo'
+      # historyURL: 'foo'
+      # historyURL: -&gt;
+
+      constructor: -&gt;
+        @initialize arguments...
+
+      initialize: -&gt;
+
+      # Disposal
+      # --------
+
+      disposed: false
+
+      dispose: -&gt;
+        return if @disposed
+
+        # Dispose and delete all members which are disposable
+        for own prop of this
+          obj = this[prop]
+          if obj and typeof obj.dispose is 'function'
+            obj.dispose()
+            delete this[prop]
+
+        # Unbind handlers of global events
+        @unsubscribeAllEvents()
+
+        # Remove properties
+        properties = ['currentId']
+        delete this[prop] for prop in properties
+
+        # Finished
+        @disposed = true
+
+        # You're frozen when your heart’s not open
+        Object.freeze? this
 </code></pre>
 
   </div>
@@ -204,10 +273,7 @@
       </div>
 
       <footer>
-        <p>&copy;  2012
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p>
+        <p>&copy; Chaplin 2011 - 2012</p>
       </footer>
 
     </div> <!-- /container -->

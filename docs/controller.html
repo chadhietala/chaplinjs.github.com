@@ -199,17 +199,83 @@
 
 <div class="row">
   <div class="span12">
-    <h2 id="methods-of-chaplincontroller">Methods of <code>Chaplin.Controller</code></h2>
+    <p>A controller is the place where a model/collection and an associated views are instantiated. It is also in charge of model and view disposal when another controller takes over. There can be one current controller which provides the main view and represents the current URL. In addition, there can be several persistent controllers which govern special views like a header, a navigation sidebar or a footer.</p>
 
-<h3 id="method1arg1-optionalarg-args">method1(arg1, [optional_arg], [*args])</h3>
-<p>Lorem</p>
+<h2 id="methods-of-chaplincontroller">Methods of <code>Chaplin.Controller</code></h2>
+
+<p>Chaplin.Controller doesn’t provide public methods. See the usage below:</p>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="naming-convention">Naming convention</h3>
+
+<p>By default, all controllers must be placed into the <code>/controllers/</code> (the / stands for the root of the baseURL you have defined for your loader) folder and be suffixed with <code>_controller</code>. So for instance, the <code>LikeController</code> will be in the file <code>/controllers/like_controller.js</code>.</p>
+
+<p>If you want to overwrite this behaviour, you can edit the <code>controller_path</code> and <code>controller_suffix</code> options in the options hash you pass to <code>Chaplin.Application.initDispatcher</code> or <code>Chaplin.Dispatcher.initialize</code>. See details in the <code>Chaplin.Dispatcher</code> <a href="/docs/dispatcher.html#initialize">documentation</a>.</p>
 
 <hr />
 
-<h3 id="method2">method2()</h3>
-<p>Lorem</p>
+<h3 id="structure">Structure</h3>
 
-<h2 id="usage">Usage</h2>
+<p>By convention, there is a controller for each application module. A controller may provide several action methods like <code>index</code>, <code>show</code>, <code>edit</code> and so on. These actions are called by the <a href="/docs/dispatcher.html">Chaplin.Dispatcher</a> when a route matches.</p>
+
+<p>Most of the time, a controller is started following a route match. In this case, the URL representing the application state is already given. But a controller can also be started programatically by publishing a <code>!startupController</code> event. In this case, the URL has to be determined. This is the purpose of the <code>historyURL</code> method.</p>
+
+<hr />
+
+<h3 id="exemple">Exemple</h3>
+
+<pre><code class="coffeescript">
+define [
+  'controllers/controller',
+  'models/likes',          # the collection
+  'models/like',           # the model
+  'views/likes_view',      # the collection view
+  'views/full_like_view'   # the view
+], (Controller, Likes, Like, LikesView, FullLikeView) -&gt;
+
+  'use strict'
+
+  class LikesController extends Controller
+
+    historyURL: (params) -&gt;
+      if params.id then "likes/#{params.id}" else ''
+
+    # initialize method is empty here
+
+    index: (params) -&gt;
+      @collection = new Likes()
+      @view = new LikesView collection: @collection
+
+    show: (params) -&gt;
+      @model = new Like id: params.id
+      @view = new FullLikeView model: @model
+</code></pre>
+
+<hr />
+
+<h3 id="warning-1-controller-persistence">Warning 1: Controller persistence</h3>
+
+<p>Per default, a controller is instantiated afresh with every route match. That means models and views are disposed by default even if the new controller is the same as the old controller. To persist models and views, it is recommended to save them in a central store, not on the controller instances.</p>
+
+<hr />
+
+<h3 id="warning-2-application-build">Warning 2: Application build</h3>
+
+<p>When you go in production, you may want to package your javascript files togethers using a build tool like <code>r.js</code>.</p>
+
+<p>Controllers are dynamically loaded from the <code>Chaplin.Dispatcher</code> using the <code>require()</code> method. Build tools (like r.js) ignore the files loaded in the code using the <code>require()</code> method and only consider the one in the <code>define()</code> one.</p>
+
+<p>It means that build tools will ignore your controllers and won’t include them in your package. You need to include them manually, for instance with r.js:</p>
+
+<pre><code class="yaml">
+paths:
+  # ...
+modules:
+  - name: 'application'
+  - name: 'controllers/one_controller'       # included manually into the build
+  - name: 'controllers/another_controller'   # same
+</code></pre>
 
 <h2 id="dependencies">Dependencies</h2>
 <ul>

@@ -188,7 +188,20 @@
     <p>The <code>Dispatcher</code> sits between the router and the controllers. It listens for routing events, loads the target controller module if one happen, creates a controller instance and calls the target action. The previously active controller is automatically disposed.</p>
 
 <h2 id="methods-of-chaplindispatcher">Methods of <code>Chaplin.Dispatcher</code></h2>
-<p>The <code>Chaplin.Dispatcher</code> doesn’t have public methods. You can interac with it via the mediator like explained below.</p>
+
+<p><a name="initialize"></a></p>
+
+<h3 id="initialize-options-">initialize( [options={}] )</h3>
+
+<ul class="arguments">
+  <li>
+    <strong>options</strong>:
+    <ul>
+      <li><strong>controller_path</strong>: the path to the folder for the controllers. <em>Default: '/controllers'</em></li>
+      <li><strong>controller_suffix</strong>: the suffix used for controller files. <em>Default: '_controller'</em></li>
+    </ul>
+  </li>
+</ul>
 
 <h2 id="usage">Usage</h2>
 <p>A specific controller can be started programatically by publishing an app-wide <code>!startupController</code> event which will be handled by the <code>Dispatcher</code>:</p>

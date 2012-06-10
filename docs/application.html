@@ -192,18 +192,41 @@
 
 <h2 id="methods-of-chaplinapplication">Methods of <code>Chaplin.Application</code></h2>
 
-<h3 id="initdispatcheroptions">initDispatcher([options={}])</h3>
-<p>Initialize <code>Chaplin.Dispatcher</code>. <a href="/docs/dispatcher.html">Chaplin.Dispatcher documentation</a></p>
+<p><a name="initDispatcher"></a></p>
+
+<h3 id="initdispatcher-options-">initDispatcher( [options={}] )</h3>
+<p>Initialize <code>Chaplin.Dispatcher</code>. Look at <code>Chaplin.Dispatcher</code> <a href="/docs/dispatcher.html">documentation</a> for more details about the options.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>options</strong>: the option for the Dispatcher
+  </li>
+</ul>
 
 <hr />
 
-<h3 id="initlayoutoptions">initLayout([options={}])</h3>
+<p><a name="initLayout"></a></p>
+
+<h3 id="initlayout-options-">initLayout( [options={}] )</h3>
 <p>Initialize <code>Chaplin.Layout</code>. <a href="/docs/layout.html">Chaplin.Layout documentation</a></p>
 
+<ul class="arguments">
+  <li>
+    <strong>options</strong>: none for now
+  </li>
+</ul>
+
 <hr />
 
-<h3 id="initrouterroutes-options">initRouter(routes, [options={}])</h3>
+<p><a name="initRouter"></a></p>
+
+<h3 id="initrouter-routes-options-">initRouter( routes, [options={}] )</h3>
 <p>Initialize <code>Chaplin.Router</code>. <a href="/docs/router.html">Chaplin.Router documentation</a></p>
+
+<ul class="arguments">
+  <li><strong>routes</strong>: the routes defined in the routes file</li>
+  <li><strong>options</strong>: none</li>
+</ul>
 
 <h2 id="usage">Usage</h2>
 <p>The <code>Chaplin.Application</code> is intended to be extended by your Application. The <code>initialize</code> method instanciate the <code>Chaplin.Dispatcher</code>, <code>Chaplin.Layout</code> and <code>Chaplin.Router</code> by calling the <code>Chaplin.Application.init*</code> methods:</p>

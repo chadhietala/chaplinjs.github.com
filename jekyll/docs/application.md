@@ -13,19 +13,41 @@ The `Chaplin.Application` is a bootstrapper which provides methods to start othe
 
 ## Methods of `Chaplin.Application`
 
-### initDispatcher([options={}])
-Initialize `Chaplin.Dispatcher`. [Chaplin.Dispatcher documentation](/docs/dispatcher.html)
+<a name="initDispatcher"></a>
+
+### initDispatcher( [options={}] )
+Initialize `Chaplin.Dispatcher`. Look at `Chaplin.Dispatcher` [documentation](/docs/dispatcher.html) for more details about the options.
+
+<ul class="arguments">
+  <li>
+    <strong>options</strong>: the option for the Dispatcher
+  </li>
+</ul>
 
 -------------------
 
-### initLayout([options={}])
+<a name="initLayout"></a>
+
+### initLayout( [options={}] )
 Initialize `Chaplin.Layout`. [Chaplin.Layout documentation](/docs/layout.html)
 
+<ul class="arguments">
+  <li>
+    <strong>options</strong>: none for now
+  </li>
+</ul>
+
 -------------------
 
-### initRouter(routes, [options={}])
+<a name="initRouter"></a>
+
+### initRouter( routes, [options={}] )
 Initialize `Chaplin.Router`. [Chaplin.Router documentation](/docs/router.html)
 
+<ul class="arguments">
+  <li><strong>routes</strong>: the routes defined in the routes file</li>
+  <li><strong>options</strong>: none</li>
+</ul>
 
 
 ## Usage

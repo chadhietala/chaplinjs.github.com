@@ -15,9 +15,11 @@ Note: If you want to give Pub/Sub functionality to a Class, also look at the [Su
 
 ### on(event, handler, [context])
 
-A wrapper for `Backbone.Events.on`. [Backbone documentation](http://backbonejs.org/#Events-on).
+A wrapper for `Backbone.Events.on`. See Backbone [documentation](http://backbonejs.org/#Events-on) for more details.
 
 -------------------
+
+<a name="initRouter"></a>
 
 ### subscribe(event, handler, [context])
 
@@ -25,11 +27,15 @@ Is an alias for `Chaplin.mediator.on`.
 
 -------------------
 
+<a name="off"></a>
+
 ### off([event], [handler], [context])
 
-A wrapper for `Backbone.Events.off`. [Backbone documentation](http://backbonejs.org/#Events-off).
+A wrapper for `Backbone.Events.off`. See Backbone [documentation](http://backbonejs.org/#Events-off) for more details.
 
 -------------------
+
+<a name="unsubscribe"></a>
 
 ### unsubscribe([event], [handler], [context])
 
@@ -37,11 +43,15 @@ Is an alias for `Chaplin.mediator.off`.
 
 -------------------
 
+<a name="trigger"></a>
+
 ### trigger(event, [*args])
 
-A wrapper for `Backbone.Events.trigger`. [Backbone documentation](http://backbonejs.org/#Events-trigger).
+A wrapper for `Backbone.Events.trigger`. See Backbone [documentation](http://backbonejs.org/#Events-trigger) for more details.
 
 -------------------
+
+<a name="publish"></a>
 
 ### publish(event, [*args])
 

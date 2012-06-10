@@ -8,7 +8,21 @@ The `Dispatcher` sits between the router and the controllers. It listens for rou
 
 
 ## Methods of `Chaplin.Dispatcher`
-The `Chaplin.Dispatcher` doesn't have public methods. You can interac with it via the mediator like explained below.
+
+<a name="initialize"></a>
+
+### initialize( [options={}] )
+
+<ul class="arguments">
+  <li>
+    <strong>options</strong>:
+    <ul>
+      <li><strong>controller_path</strong>: the path to the folder for the controllers. <em>Default: '/controllers'</em></li>
+      <li><strong>controller_suffix</strong>: the suffix used for controller files. <em>Default: '_controller'</em></li>
+    </ul>
+  </li>
+</ul>
+
 
 
 ## Usage

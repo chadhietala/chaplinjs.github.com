@@ -29,6 +29,7 @@ group: navigation
 
 ### Libs
 * [Subscriber](/docs/subscriber.html)
+* [SyncMachine](/docs/syncmachine.html)
 
 
 

@@ -15,6 +15,7 @@ http://chaplinjs.github.com/docs/overview.html
 http://chaplinjs.github.com/docs/router.html
 http://chaplinjs.github.com/docs/setup.html
 http://chaplinjs.github.com/docs/subscriber.html
+http://chaplinjs.github.com/docs/syncmachine.html
 http://chaplinjs.github.com/docs/view.html
 http://chaplinjs.github.com/index.html
 http://chaplinjs.github.com/pages/authors.html

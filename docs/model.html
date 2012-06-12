@@ -124,6 +124,10 @@
 
   
     
+  
+
+  
+    
     	
     	<li><a href="/pages/authors.html">Authors</a></li>
     	
@@ -189,7 +193,49 @@
 <h2 id="methods-of-chaplinmodel">Methods of <code>Chaplin.Model</code></h2>
 <p>All <code>Backbone.Model</code> <a href="http://backbonejs.org/#Model">methods</a>.</p>
 
-<p>TODO</p>
+<p><a name="initDeferred"></a></p>
+
+<h3 id="initdeferred">initDeferred</h3>
+
+<p>Creates a new <a href="http://api.jquery.com/category/deferred-object/">jQuery Deferred object</a> instance.</p>
+
+<hr />
+
+<p><a name="initSyncMachine"></a></p>
+
+<h3 id="initsyncmachine">initSyncMachine</h3>
+
+<p>Creates a new <a href="./syncmachine.html">Chaplin.SyncMachine</a> instance.</p>
+
+<hr />
+
+<p><a name="getAttributes"></a></p>
+
+<h3 id="getattributes">getAttributes</h3>
+
+<p>Gets the attributes from the view template and can be overwritten by decorators which cannot create a proper ‘attributes’ getter due to the absence of getters and setters in ECMAScript 3.</p>
+
+<hr />
+
+<p><a name="serialize"></a></p>
+
+<h3 id="serializemodel">serialize([model])</h3>
+
+<p>Maps models to their attributes recursively. Creates an object which delegates to the original attributes when a property needs to be overwritten.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>model</strong>: A model which needs to be serialized
+  </li>
+</ul>
+
+<hr />
+
+<p><a name="dispose"></a></p>
+
+<h3 id="dispose">dispose</h3>
+
+<p>Announces to all associated collections and views that the model is being disposed. Unbinds all the global event handlers and also removes all the event handlers on the Model module. If the model is a Deferred, it will be rejected.  Removes the collection reference, internal attribute hashes and event handlers.  Attempts to freeze the Model to prevent any changes to the Model. See <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze</a>.</p>
 
 <h2 id="usage">Usage</h2>
 <p>Please do not register their methods directly as Pub/Sub listeners, use <code>subscribeEvent</code> instead. This forces the handler context so the handler might be removed again on model/collection disposal. It’s crucial to remove all references to model/collection methods to allow them to be garbage collected.</p>

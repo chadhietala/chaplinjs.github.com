@@ -1,4 +1,11 @@
 
+  
+  
+
+
+
+  
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,16 +20,18 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
-    <!-- Le fav and touch icons -->
-  <!-- Update these with your own images
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  -->
+    <!-- Code highlighting -->
+    <link rel="stylesheet" href="/assets/css/github.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/assets/javascript/highlight.pack.js"></script>
+    <script>
+      $(function() {
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+      });
+    </script>
   </head>
 
   <body>
@@ -39,111 +48,121 @@
 
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/docs/index.html">Docs</a></li>
-      	
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
+    	
+    	<li><a href="/docs/index.html">Docs</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/authors.html">Authors</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/changelogs.html">Changelogs</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li class="active"><a href="/pages/manifesto.html" class="active">Manifesto</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/license.html">License</a></li>
-      	
-      
-    
+  
+
   
     
-      
+    	
+    	<li><a href="/pages/authors.html">Authors</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
+    	
+    	<li><a href="/pages/changelogs.html">Changelogs</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
+    	
+    	<li class="active"><a href="/pages/manifesto.html" class="active">Manifesto</a></li>
+    	
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
     
   
 
@@ -161,27 +180,16 @@
   <h1>Manifesto  <small>Why Chaplin was created</small></h1>
 
   
+
 </div>
 
 <div class="row">
   <div class="span12">
-    <p><img src="http://s3.amazonaws.com/imgly_production/3401027/original.png" alt="Chaplin" /></p>
-
-<h1 id="an-application-architecture-using-backbonejs">An Application Architecture Using Backbone.js</h1>
-
-<h2 id="introduction">Introduction</h2>
-
-<p>Chaplin is an architecture for JavaScript applications using the <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> library. The code is derived from <a href="http://moviepilot.com/">moviepilot.com</a>, a large single-page application.</p>
+    <p>Chaplin is an architecture for JavaScript applications using the <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> library. The code is derived from <a href="http://moviepilot.com/">moviepilot.com</a>, a large single-page application.</p>
 
 <ul>
-  <li><a href="#current-version-03">Current Version: 0.3</a></li>
-  <li><a href="#upcoming-version-chaplin-as-a-library">Upcoming Version: Chaplin as a Library</a></li>
-  <li><a href="#stay-tuned-for-updates">Stay Tuned for Updates</a></li>
-  <li><a href="#key-features">Key Features</a></li>
   <li><a href="#motivation">Motivation</a></li>
-  <li><a href="#dependencies">Dependencies</a></li>
   <li><a href="#building-chaplin">Building Chaplin</a></li>
-  <li><a href="#boilerplate-and-examples">Boilerplate and Examples</a></li>
   <li><a href="#the-architecture-in-detail">The Architecture in Detail</a></li>
   <li><a href="#application">Application</a></li>
   <li><a href="#mediator-and-publishsubscribe">Mediator and Publish/Subscribe</a></li>
@@ -198,48 +206,7 @@
   <li><a href="https://github.com/chaplinjs/chaplin/blob/master/AUTHORS.md#the-producers">The Producers</a></li>
 </ul>
 
-<h2 id="current-version-03">Current Version: 0.3</h2>
-
-<p>The current stable version is <strong>0.3</strong>, released on 2012-03-23.</p>
-
-<p>To use the stable version, please clone the repository and <a href="https://github.com/chaplinjs/chaplin/tree/0.3">check out the tag 0.3</a>.</p>
-
-<p>See also the <a href="https://github.com/chaplinjs/chaplin/blob/master/CHANGELOG.md">Changelog</a>.</p>
-
-<h2 id="upcoming-version-chaplin-as-a-library">Upcoming Version: Chaplin as a Library</h2>
-
-<p>While the stable version is merely an example application structure, our goal is to generalize Chaplin into a separate, reusable and unit-tested library.</p>
-
-<p>There’s a major rewrite going on and the <code>master</code> branch already reflects these changes. We’re working on several topics:</p>
-
-<ul>
-  <li>Improving and generalizing the Chaplin architecture</li>
-  <li>Writing tests for all Chaplin core components</li>
-  <li>Writing an up-to-date documentation and writing a class &amp; method reference</li>
-  <li>Creating a boilerplate app, outsourcing the current application examples</li>
-</ul>
-
-<p>How about joining us? You might also have a look at the <a href="https://github.com/chaplinjs/chaplin/issues">issue discussions</a> about changes on the structure. There is also a <a href="https://groups.google.com/forum/?hl=en&amp;fromgroups#!forum/chaplin-js">mailing list for discussion on Google Groups</a>.</p>
-
-<h2 id="stay-tuned-for-updates">Stay tuned for updates</h2>
-
-<p><a href="https://twitter.com/chaplinjs">Follow Chaplin.js on Twitter</a> to get updates on new versions, major changes and the ongoing development.</p>
-
 <hr />
-
-<h2 id="key-features">Key Features</h2>
-
-<ul>
-  <li>CoffeeScript class hierarchies as well as object composition</li>
-  <li>Module encapsulation and lazy-loading using AMD modules</li>
-  <li>Cross-module communication using the Mediator and Publish/Subscribe patterns</li>
-  <li>Controllers for managing individual UI views</li>
-  <li>Rails-style routes which map URLs to controller actions</li>
-  <li>A route dispatcher and a top-level view manager</li>
-  <li>Extended model, view and collection classes to avoid repetition and enforce conventions</li>
-  <li>Strict memory management and object disposal</li>
-  <li>A collection view for easy and intelligent list rendering</li>
-</ul>
 
 <h2 id="motivation">Motivation</h2>
 
@@ -252,17 +219,6 @@
 <p>Backbone is an easy starting point, but provides only basic, low-level patterns. Especially, Backbone provides little to structure an actual application. For example, the famous “Todo list example” is not an application in the strict sense nor does it teach best practices how to structure Backbone code.</p>
 
 <p>To be fair, Backbone doesn’t intend to be an all-round framework so it wouldn’t be appropriate to blame Backbone for this deliberate limitations. Nonetheless, most Backbone use cases clearly need a sophisticated application architecture. This is where Chaplin enters the stage.</p>
-
-<h2 id="dependencies">Dependencies</h2>
-
-<p>Chaplin depends on the following libraries:</p>
-
-<ul>
-  <li><a href="http://documentcloud.github.com/underscore/">Underscore</a></li>
-  <li><a href="http://documentcloud.github.com/backbone/">Backbone</a></li>
-  <li><a href="http://jquery.com/">jQuery</a></li>
-  <li>An AMD module loader like <a href="http://requirejs.org/">RequireJS</a>, <a href="https://github.com/jrburke/almond">Almond</a> or <a href="https://github.com/cujojs/curl">curl</a> to load Chaplin and lazy-module application modules</li>
-</ul>
 
 <h2 id="building-chaplin">Building Chaplin</h2>
 
@@ -283,23 +239,6 @@ cd build
   <li><code>chaplin-min.js</code> – Minified</li>
   <li><code>chaplin-min.js.gz</code> – Minified and GZip-compressed</li>
 </ul>
-
-<h2 id="boilerplate-and-examples">Boilerplate and Examples</h2>
-
-<p>In separate repositories, you will find a example applications which can also be used as a boilerplate:</p>
-
-<h3 id="facebook-like-browser">Facebook Like Browser</h3>
-
-<p><a href="https://github.com/chaplinjs/facebook-example">github.com/chaplinjs/facebook-example</a></p>
-
-<p>This example uses Facebook client-side authentication to display the user’s Likes.</p>
-
-<h3 id="brunch-with-chaplin">Brunch with Chaplin</h3>
-<p><a href="https://github.com/paulmillr/brunch-with-chaplin">github.com/paulmillr/brunch-with-chaplin</a></p>
-
-<p>Brunch with Chaplin is a skeleton application, where <a href="http://brunch.io">brunch</a> is used for assembling files &amp; assets. It has ready-to-use classes for session management, html5boilerplate and stylus / handlebars.js as app languages.</p>
-
-<p><a href="https://github.com/brunch/twitter">github.com/brunch/twitter</a> is a twitter client, built on it. It uses Twitter client-side authentication to display user’s feed and to create new tweets.</p>
 
 <h2 id="the-architecture-in-detail">The Architecture in Detail</h2>
 
@@ -538,21 +477,13 @@ show: (params) -&gt;
 
 <p><img src="http://s3.amazonaws.com/imgly_production/3362023/original.jpg" alt="Ending" /></p>
 
-<h2 id="the-casthttpsgithubcomchaplinjschaplinblobmasterauthorsmdthe-cast"><a href="https://github.com/chaplinjs/chaplin/blob/master/AUTHORS.md#the-cast">The Cast</a></h2>
-
-<h2 id="the-producershttpsgithubcomchaplinjschaplinblobmasterauthorsmdthe-producers"><a href="https://github.com/chaplinjs/chaplin/blob/master/AUTHORS.md#the-producers">The Producers</a></h2>
-
   </div>
 </div>
-
 
       </div>
 
       <footer>
-        <p>&copy;  2012 
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p>
+        <p>&copy; Chaplin 2011 - 2012</p>
       </footer>
 
     </div> <!-- /container -->
@@ -560,4 +491,3 @@ show: (params) -&gt;
     
   </body>
 </html>
-

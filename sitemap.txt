@@ -1,5 +1,7 @@
 
 http://chaplinjs.github.com/docs/controller.html
+http://chaplinjs.github.com/docs/collection.html
+http://chaplinjs.github.com/docs/model.html
 http://chaplinjs.github.com/docs/dispatcher.html
 http://chaplinjs.github.com/docs/router.html
 http://chaplinjs.github.com/docs/index.html
@@ -10,12 +12,14 @@ http://chaplinjs.github.com/docs/setup.html
 http://chaplinjs.github.com/docs/gettingstarted.html
 http://chaplinjs.github.com/docs/disposal.html
 http://chaplinjs.github.com/docs/application.html
+http://chaplinjs.github.com/docs/subscriber.html
 http://chaplinjs.github.com/docs/layout.html
 http://chaplinjs.github.com/docs/overview.html
 http://chaplinjs.github.com/pages/authors.html
 http://chaplinjs.github.com/pages/changelogs.html
 http://chaplinjs.github.com/pages/manifesto.html
 http://chaplinjs.github.com/pages/license.html
+http://chaplinjs.github.com/pages/exemples.html
 http://chaplinjs.github.com/version/0/3/index.html
 http://chaplinjs.github.com/version/1/0/index.html
 http://chaplinjs.github.com/atom.xml

@@ -13,12 +13,23 @@ group: navigation
 
 ## API docs
 
+### Core
 * [Mediator](/docs/mediator.html)
+* [Dispatcher](/docs/dispatcher.html)
 * [Application](/docs/application.html)
 * [Router](/docs/router.html)
-* [Dispatcher](/docs/application.html)
-* [Controller](/docs/controller.html)
 
+### MVC
+* [Controller](/docs/controller.html)
+* [Model](/docs/model.html)
+* [Collection](/docs/collection.html)
 * [Layout](/docs/layout.html)
 * [View](/docs/view.html)
 * [Collection View](/docs/collectionview.html)
+
+### Libs
+* [Subscriber](/docs/subscriber.html)
+
+
+
+

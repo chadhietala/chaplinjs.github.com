@@ -1,4 +1,11 @@
 
+  
+  
+
+
+
+  
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,16 +20,18 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
-    <!-- Le fav and touch icons -->
-  <!-- Update these with your own images
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  -->
+    <!-- Code highlighting -->
+    <link rel="stylesheet" href="/assets/css/github.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/assets/javascript/highlight.pack.js"></script>
+    <script>
+      $(function() {
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+      });
+    </script>
   </head>
 
   <body>
@@ -39,111 +48,121 @@
 
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/docs/index.html">Docs</a></li>
-      	
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
+    	
+    	<li><a href="/docs/index.html">Docs</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/authors.html">Authors</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/changelogs.html">Changelogs</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/manifesto.html">Manifesto</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/license.html">License</a></li>
-      	
-      
-    
+  
+
   
     
-      
+    	
+    	<li><a href="/pages/authors.html">Authors</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
+    	
+    	<li><a href="/pages/changelogs.html">Changelogs</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
+    	
+    	<li><a href="/pages/manifesto.html">Manifesto</a></li>
+    	
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
     
   
 
@@ -161,15 +180,36 @@
   <h1>Chaplin  <small>An Application Architecture Using Backbone.js</small></h1>
 
   
+
 </div>
 
 <div class="row">
   <div class="span12">
     <p><img src="http://s3.amazonaws.com/imgly_production/3401027/original.png" alt="Chaplin" /></p>
 
-<h2 id="an-application-architecture-using-backbonejs">An Application Architecture Using Backbone.js</h2>
+<h1 id="an-application-architecture-using-backbonejs">An Application Architecture Using Backbone.js</h1>
 
-<p>Chaplin is an architecture for JavaScript applications using the <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> library. The code is derived from <a href="http://moviepilot.com/">moviepilot.com</a>, a large single-page application.</p>
+<h2 id="whats-the-fuss">What’s the fuss</h2>
+
+<p>Chaplin is an architecture for JavaScript applications using the <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> library. To understand why Chaplin is born, read the <a href="/pages/manifesto.html">Manifesto</a>.</p>
+
+<ul>
+  <li>Download</li>
+  <li>Get started</li>
+  <li><a href="/docs">Documentation</a></li>
+  <li><a href="/pages/exemples.html">Boilerplates and Examples</a></li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>Chaplin depends on the following libraries:</p>
+
+<ul>
+  <li><a href="http://documentcloud.github.com/underscore/">Underscore</a></li>
+  <li><a href="http://documentcloud.github.com/backbone/">Backbone</a></li>
+  <li><a href="http://jquery.com/">jQuery</a></li>
+  <li>An AMD module loader like <a href="http://requirejs.org/">RequireJS</a>, <a href="https://github.com/jrburke/almond">Almond</a> or <a href="https://github.com/cujojs/curl">curl</a> to load Chaplin and lazy-module application modules</li>
+</ul>
 
 <h2 id="key-features">Key Features</h2>
 
@@ -184,14 +224,20 @@
   <li>A collection view for easy and intelligent list rendering</li>
 </ul>
 
-<h2 id="information">Information</h2>
+<h2 id="support-and-help">Support and help</h2>
+
+<p>How about joining us?</p>
 
 <ul>
-  <li>Download and Getting Started</li>
-  <li><a href="/docs">Documentation</a></li>
+  <li><a href="https://github.com/chaplinjs/chaplin/issues">Issue discussions</a></li>
+  <li><a href="https://groups.google.com/forum/?hl=en&amp;fromgroups#!forum/chaplin-js">Google Groups</a></li>
+  <li><a href="https://twitter.com/chaplinjs">Twitter</a>: get updates on new versions, major changes and the ongoing development.</li>
+</ul>
+
+<h2 id="meta">Meta</h2>
+
+<ul>
   <li><a href="https://github.com/chaplinjs/chaplin">Main repository</a></li>
-  <li>Examples</li>
-  <li>Getting involved</li>
   <li><a href="/pages/license.html">License</a></li>
   <li><a href="/pages/changelogs.html">Changelogs</a></li>
   <li><a href="/pages/authors.html">Authors</a></li>
@@ -200,14 +246,10 @@
   </div>
 </div>
 
-
       </div>
 
       <footer>
-        <p>&copy;  2012 
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p>
+        <p>&copy; Chaplin 2011 - 2012</p>
       </footer>
 
     </div> <!-- /container -->
@@ -215,4 +257,3 @@
     
   </body>
 </html>
-

@@ -5,22 +5,12 @@ tagline: Why Chaplin was created
 group: navigation
 ---
 
-![Chaplin](http://s3.amazonaws.com/imgly_production/3401027/original.png)
 
-# An Application Architecture Using Backbone.js
-
-## Introduction
 
 Chaplin is an architecture for JavaScript applications using the [Backbone.js](http://documentcloud.github.com/backbone/) library. The code is derived from [moviepilot.com](http://moviepilot.com/), a large single-page application.
 
-* [Current Version: 0.3](#current-version-03)
-* [Upcoming Version: Chaplin as a Library](#upcoming-version-chaplin-as-a-library)
-* [Stay Tuned for Updates](#stay-tuned-for-updates)
-* [Key Features](#key-features)
 * [Motivation](#motivation)
-* [Dependencies](#dependencies)
 * [Building Chaplin](#building-chaplin)
-* [Boilerplate and Examples](#boilerplate-and-examples)
 * [The Architecture in Detail](#the-architecture-in-detail)
 * [Application](#application)
 * [Mediator and Publish/Subscribe](#mediator-and-publishsubscribe)
@@ -36,45 +26,7 @@ Chaplin is an architecture for JavaScript applications using the [Backbone.js](h
 * [The Cast](https://github.com/chaplinjs/chaplin/blob/master/AUTHORS.md#the-cast)
 * [The Producers](https://github.com/chaplinjs/chaplin/blob/master/AUTHORS.md#the-producers)
 
-## Current Version: 0.3
-
-The current stable version is **0.3**, released on 2012-03-23.
-
-To use the stable version, please clone the repository and [check out the tag 0.3](https://github.com/chaplinjs/chaplin/tree/0.3).
-
-See also the [Changelog](https://github.com/chaplinjs/chaplin/blob/master/CHANGELOG.md).
-
-## Upcoming Version: Chaplin as a Library
-
-While the stable version is merely an example application structure, our goal is to generalize Chaplin into a separate, reusable and unit-tested library.
-
-There’s a major rewrite going on and the `master` branch already reflects these changes. We’re working on several topics:
-
-- Improving and generalizing the Chaplin architecture
-- Writing tests for all Chaplin core components
-- Writing an up-to-date documentation and writing a class & method reference
-- Creating a boilerplate app, outsourcing the current application examples
-
-How about joining us? You might also have a look at the [issue discussions](https://github.com/chaplinjs/chaplin/issues) about changes on the structure. There is also a [mailing list for discussion on Google Groups](https://groups.google.com/forum/?hl=en&fromgroups#!forum/chaplin-js
-).
-
-## Stay tuned for updates
-
-[Follow Chaplin.js on Twitter](https://twitter.com/chaplinjs) to get updates on new versions, major changes and the ongoing development.
-
 ---
-
-## Key Features
-
-* CoffeeScript class hierarchies as well as object composition
-* Module encapsulation and lazy-loading using AMD modules
-* Cross-module communication using the Mediator and Publish/Subscribe patterns
-* Controllers for managing individual UI views
-* Rails-style routes which map URLs to controller actions
-* A route dispatcher and a top-level view manager
-* Extended model, view and collection classes to avoid repetition and enforce conventions
-* Strict memory management and object disposal
-* A collection view for easy and intelligent list rendering
 
 ## Motivation
 
@@ -88,14 +40,8 @@ Backbone is an easy starting point, but provides only basic, low-level patterns.
 
 To be fair, Backbone doesn’t intend to be an all-round framework so it wouldn’t be appropriate to blame Backbone for this deliberate limitations. Nonetheless, most Backbone use cases clearly need a sophisticated application architecture. This is where Chaplin enters the stage.
 
-## Dependencies
 
-Chaplin depends on the following libraries:
 
-* [Underscore](http://documentcloud.github.com/underscore/)
-* [Backbone](http://documentcloud.github.com/backbone/)
-* [jQuery](http://jquery.com/)
-* An AMD module loader like [RequireJS](http://requirejs.org/), [Almond](https://github.com/jrburke/almond) or [curl](https://github.com/cujojs/curl) to load Chaplin and lazy-module application modules
 
 ## Building Chaplin
 
@@ -115,28 +61,16 @@ This creates several files in ./build/:
 * `chaplin-min.js` – Minified
 * `chaplin-min.js.gz` – Minified and GZip-compressed
 
-## Boilerplate and Examples
 
-In separate repositories, you will find a example applications which can also be used as a boilerplate:
-
-### Facebook Like Browser
-
-[github.com/chaplinjs/facebook-example](https://github.com/chaplinjs/facebook-example)
-
-This example uses Facebook client-side authentication to display the user’s Likes.
-
-### Brunch with Chaplin
-[github.com/paulmillr/brunch-with-chaplin](https://github.com/paulmillr/brunch-with-chaplin)
-
-Brunch with Chaplin is a skeleton application, where [brunch](http://brunch.io) is used for assembling files & assets. It has ready-to-use classes for session management, html5boilerplate and stylus / handlebars.js as app languages.
-
-[github.com/brunch/twitter](https://github.com/brunch/twitter) is a twitter client, built on it. It uses Twitter client-side authentication to display user’s feed and to create new tweets.
 
 ## The Architecture in Detail
 
 The following chapters will discuss the core objects and classes of our application structure.
 
 ![Machine](http://img.ly/system/uploads/003/362/032/original_machine.jpg)
+
+
+
 
 ## Application
 
@@ -147,6 +81,7 @@ The root object of the JavaScript application is just called `Application`. In p
 * `Router`
 * `Dispatcher`
 * `Layout`
+
 
 
 ## Mediator and Publish/Subscribe
@@ -173,6 +108,9 @@ mediator.publish 'login', user
 
 The second and all subsequent arguments are passed through to the handler functions.
 
+
+
+
 ## Router
 
 The Router is responsible for observing URL changes. If a declared route matches the current URL, an event is triggered.
@@ -195,6 +133,9 @@ Additional fixed parameters and parameter constraints may be specified in the `m
 match 'likes/:id', 'likes#show', constraints: { id: /^\d+$/ }, params: { foo: 'bar' }
 ```
 
+
+
+
 ## Dispatcher
 
 Between the router and the controllers, there is the `Dispatcher` which listens for routing events. On such events, it loads the target controller module, creates a controller instance and calls the target action. The previously active controller is automatically disposed.
@@ -207,11 +148,17 @@ mediator.publish '!startupController', 'controller', 'action', params
 
 The `Dispatcher` handles the `!startupController` event.
 
+
+
+
 ## Layout
 
 The Layout is the top-level application view. When a new controller was activated, the `Layout` is responsible for changing the main view to the view of the new controller.
 
 In addition, the `Layout` handles the activation of internal links. That is, you can use a normal `<a href="/foo">` element to link to another application module.
+
+
+
 
 ## Controllers
 
@@ -253,6 +200,9 @@ Per default, a controller is instantiated afresh with every route match. That me
 
 Most of the time, a controller is started following a route match. In this case, the URL representing the application state is already given. But a controller can also be started programatically by publishing a `!startupController` event. In this case, the URL has to be determined. This is the purpose of the `historyURL` method.
 
+
+
+
 ## Models and Collections
 
 Chaplin extends the standard Backbone models and collections with some new methods. `dispose` is the destructor for cleaning up. The Chaplin `Collection` also has `addAtomic` for adding several items while fireing a `reset` event, and `update` for updating a collection while fireing several `add`/`remove` events instead of a single `reset` event.
@@ -260,6 +210,9 @@ Chaplin extends the standard Backbone models and collections with some new metho
 Using these `Model` and `Collection` classes, we create a hierarchy of CoffeeScript classes. Many child classes override methods while calling `super`.
 
 Models and collections are Publish/Subscribe event subscribers by using the `Subscriber` mixin. Please do not register their methods directly as Pub/Sub listeners, use `subscribeEvent` instead. This forces the handler context so the handler might be removed again on model/collection disposal. It’s crucial to remove all references to model/collection methods to allow them to be garbage collected.
+
+
+
 
 ## Views
 
@@ -276,6 +229,9 @@ Also, `@model.bind()` should not be used directly. Chaplin has `@modelBind()` wh
 ### CollectionView
 
 The `CollectionView` is responsible for displaying collections. For every item in a collection, it instantiates a given item view and inserts it into the DOM. It reacts to collection change events (`add`, `remove` and `reset`) and provides basic filtering, caching of views, fallback content and loading indicators.
+
+
+
 
 ## Event Handling Overview
 
@@ -331,6 +287,9 @@ In addition, `delegate` automatically binds the handler to the view object, so `
 @$el.off 'click', '.close'
 ```
 
+
+
+
 ## Memory Management and Object Disposal
 
 One of the core concerns of the Chaplin architecture is a proper memory management. There isn’t a broad discussion about garbage collection in JavaScript applications, but in fact it’s an important topic. Backbone provides little out of the box so Chaplin ensures that every controller, model, collection and view cleans up after itself.
@@ -341,9 +300,13 @@ Before a new controller takes over and the user interface changes, the `dispose`
 
 This disposal process is quite complex and many objects needs a custom `dispose` method. But this is just the least Chaplin can do.
 
+
+
+
 ## Handling Asynchronous Dependencies
 
 Most processes in a client-side JavaScript application run asynchronously. It is quite common that an applications is communicating with different external APIs. API bridges are established on demand and of course all API calls are asynchronous. Lazy-loading code and content is a key to perfomance. Therefore, handling asynchronous dependencies is a big challenges for JavaScript web applications. We’re using the following techniques to handle dependencies, from bottom-level to top-level.
+
 
 ### Backbone Events
 
@@ -368,7 +331,3 @@ The helper method `utils.deferMethods` in [the Facebook example repository](http
 The Publish/Subscribe pattern is the most important glue in Chaplin applications because it’s used for most of the cross-module interaction. It’s a powerful pattern to promote loose coupling of application modules. Chaplin’s implementation using `Backbone.Events` is simply but highly beneficial.
 
 ![Ending](http://s3.amazonaws.com/imgly_production/3362023/original.jpg)
-
-## [The Cast](https://github.com/chaplinjs/chaplin/blob/master/AUTHORS.md#the-cast)
-
-## [The Producers](https://github.com/chaplinjs/chaplin/blob/master/AUTHORS.md#the-producers)

@@ -1,9 +1,16 @@
 
+  
+  
+
+
+
+  
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Mediator</title>
+    <title>Chaplin.Mediator</title>
     
     <meta name="author" content="">
 
@@ -13,16 +20,18 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
-    <!-- Le fav and touch icons -->
-  <!-- Update these with your own images
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  -->
+    <!-- Code highlighting -->
+    <link rel="stylesheet" href="/assets/css/github.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/assets/javascript/highlight.pack.js"></script>
+    <script>
+      $(function() {
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+      });
+    </script>
   </head>
 
   <body>
@@ -39,111 +48,121 @@
 
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/docs/index.html">Docs</a></li>
-      	
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
+    	
+    	<li><a href="/docs/index.html">Docs</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/authors.html">Authors</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/changelogs.html">Changelogs</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/manifesto.html">Manifesto</a></li>
-      	
-      
-    
+  
+
   
     
-      
-      	
-      	<li><a href="/pages/license.html">License</a></li>
-      	
-      
-    
+  
+
   
     
-      
+    	
+    	<li><a href="/pages/authors.html">Authors</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
+    	
+    	<li><a href="/pages/changelogs.html">Changelogs</a></li>
+    	
     
   
-    
-      
-    
+
   
     
-      
+    	
+    	<li><a href="/pages/manifesto.html">Manifesto</a></li>
+    	
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
     
   
 
@@ -158,26 +177,163 @@
 
       <div class="content">
         <div class="page-header">
-  <h1>Mediator  <small> - API documentation</small></h1>
+  <h1>Chaplin.Mediator  <small> - API documentation</small></h1>
 
   
+
 </div>
 
 <div class="row">
   <div class="span12">
-    
+    <p>As all modules are encapsulated and independent from each other, we need a way to make them communicate. That’s the Mediator’s role. The Mediator implement the <a href="http://en.wikipedia.org/wiki/Publish/subscribe">Publish/Subscribe</a> (Pub/Sub) pattern to ensure loose coupling of application modules.</p>
+
+<p>To inform other modules that something happened, a module doesn’t send messages directly (i.e. calling methods of specific objects). Instead, it publishes a message to the mediator without having to know who is listening. Other application modules might subscribe to these messages and react upon them.</p>
+
+<p>Note: If you want to give Pub/Sub functionality to a Class, also look at the <a href="/docs/subscriber.html">Subscriber</a>.</p>
+
+<h2 id="methods-of-chaplinmediator">Methods of <code>Chaplin.mediator</code></h2>
+
+<h3 id="onevent-handler-context">on(event, handler, [context])</h3>
+
+<p>A wrapper for <code>Backbone.Events.on</code>. See Backbone <a href="http://backbonejs.org/#Events-on">documentation</a> for more details.</p>
+
+<hr />
+
+<p><a name="initRouter"></a></p>
+
+<h3 id="subscribeevent-handler-context">subscribe(event, handler, [context])</h3>
+
+<p>Is an alias for <code>Chaplin.mediator.on</code>.</p>
+
+<hr />
+
+<p><a name="off"></a></p>
+
+<h3 id="offevent-handler-context">off([event], [handler], [context])</h3>
+
+<p>A wrapper for <code>Backbone.Events.off</code>. See Backbone <a href="http://backbonejs.org/#Events-off">documentation</a> for more details.</p>
+
+<hr />
+
+<p><a name="unsubscribe"></a></p>
+
+<h3 id="unsubscribeevent-handler-context">unsubscribe([event], [handler], [context])</h3>
+
+<p>Is an alias for <code>Chaplin.mediator.off</code>.</p>
+
+<hr />
+
+<p><a name="trigger"></a></p>
+
+<h3 id="triggerevent-args">trigger(event, [*args])</h3>
+
+<p>A wrapper for <code>Backbone.Events.trigger</code>. See Backbone <a href="http://backbonejs.org/#Events-trigger">documentation</a> for more details.</p>
+
+<hr />
+
+<p><a name="publish"></a></p>
+
+<h3 id="publishevent-args">publish(event, [*args])</h3>
+
+<p>Is an alias for <code>Chaplin.mediator.trigger</code>.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Any module that need to publish or subscrib to messages to/from other modules must require <code>Chaplin</code> as a dependency.</p>
+
+<pre><code>define ['chaplin', 'otherdependency'], (Chaplin, OtherDependency) -&gt;
+</code></pre>
+
+<p>For example, if you have a session_controller that login the user, it will tell the mediator (which will tell it to interested modules) that the login happened by doing:</p>
+
+<pre><code>mediator.trigger 'login', user
+# OR
+mediator.publish 'login', user
+</code></pre>
+
+<p>Any module that is interested to know about the user login will subscribe to it by doing:</p>
+
+<pre><code>Chaplin.mediator.on 'login', @doSomething
+# OR
+Chaplin.mediator.subscribe 'login', @doSomething
+</code></pre>
+
+<p>Finally, if this module needs to stop listening on the login event, it can just unsubscribe by doing:</p>
+
+<pre><code>Chaplin.mediator.off 'login', @doSomething
+# OR
+Chaplin.mediator.unsubscribe 'login', @doSomething
+</code></pre>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<ul>
+  <li><code>underscore</code></li>
+  <li><code>chaplin/lib/subscriber</code></li>
+</ul>
+
+<h2 id="code">Code</h2>
+
+<pre><code class="coffeescript">
+    # Mediator
+    # --------
+
+    # The mediator is a simple object all others modules use to communicate
+    # with each other. It implements the Publish/Subscribe pattern.
+    #
+    # Additionally, it holds objects which need to be shared between modules.
+    # In this case, a `user` property is created for getting the user object
+    # and a `setUser` method for setting the user.
+    #
+    # This module returns the singleton object. This is the
+    # application-wide mediator you might load into modules
+    # which need to talk to other modules using Publish/Subscribe.
+
+    # Start with a simple object
+    mediator = {}
+
+    # Publish / Subscribe
+    # -------------------
+
+    # Mixin event methods from Backbone.Events,
+    # create Publish/Subscribe aliases
+    mediator.subscribe   = mediator.on      = Backbone.Events.on
+    mediator.unsubscribe = mediator.off     = Backbone.Events.off
+    mediator.publish     = mediator.trigger = Backbone.Events.trigger
+
+    # Initialize an empty callback list so we might seal the mediator later
+    mediator._callbacks = null
+
+    # Make properties readonly
+    utils.readonly mediator,
+      'subscribe', 'unsubscribe', 'publish',
+      'on', 'off', 'trigger'
+
+    # Sealing the mediator
+    # --------------------
+
+    # After adding all needed properties, you should seal the mediator
+    # using this method
+    mediator.seal = -&gt;
+      # Prevent extensions and make all properties non-configurable
+      if support.propertyDescriptors and Object.seal
+        Object.seal mediator
+
+    # Make the method readonly
+    utils.readonly mediator, 'seal'
+
+    # Return our creation
+    mediator
+
+</code></pre>
 
   </div>
 </div>
 
-
       </div>
 
       <footer>
-        <p>&copy;  2012 
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p>
+        <p>&copy; Chaplin 2011 - 2012</p>
       </footer>
 
     </div> <!-- /container -->
@@ -185,4 +341,3 @@
     
   </body>
 </html>
-

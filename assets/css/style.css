@@ -78,3 +78,44 @@ html, body {
 	border:1px solid #4C964D;
 	color:#FFF;
 }
+
+h2 {
+  background: #636363;
+  color: #ddd;
+  margin: 60px 0 20px -20px;
+  padding: 0 20px;
+  width: 940px;
+}
+
+h2 code {
+  background-color: transparent;
+  border: none;
+  color: #FA3163;
+  font-size: 15px;
+  padding: 3px 4px;
+}
+
+code {
+  color: #333;
+  padding: 1px 2px;
+}
+
+p {
+  line-height: 24px;
+}
+
+pre {
+  margin-bottom: 40px;
+}
+
+ul.arguments {
+  border-left: 20px solid #eee;
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 20px;
+}
+
+ul.arguments strong {
+  color: #D14;
+  font-weight: normal;
+}

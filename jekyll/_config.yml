@@ -12,25 +12,18 @@ markdown: kramdown
 #
 title : Chaplin
 tagline: An Application Architecture Using Backbone.js
-# author :
-#   name : Name Lastname
-#   email : blah@email.test
-#   github : username
-#   twitter : username
-#   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
-# such as sitemap.txt
-# Most places will/should use BASE_PATH to make the urls
-#
-# If you have set a CNAME (pages.github.com) set your custom domain here.
-# Else if you are pushing to username.github.com, replace with your username.
-# Finally if you are pushing to a GitHub project page, include the project name at the end.
-#
+# such as sitemap.txt Most places should use BASE_PATH for urls
 production_url : http://chaplinjs.github.com
+
+BASE_PATH: "/"
 
 current_version: '1.0'
 
 versions:
   '0.3': '/0/3/'
   '1.0': '/1/0/'
+
+menu:
+

@@ -1,0 +1,13 @@
+{% if site.JB.BASE_PATH %}
+  {% assign BASE_PATH = site.BASE_PATH %}
+  {% assign HOME_PATH = site.BASE_PATH %}
+{% else %}
+  {% assign BASE_PATH = nil %}
+  {% assign HOME_PATH = "/" %}
+{% endif %}
+
+{% if site.ASSET_PATH %}
+  {% assign ASSET_PATH = site.ASSET_PATH %}
+{% else %}
+  {% assign ASSET_PATH = "/assets" %}
+{% endif %}

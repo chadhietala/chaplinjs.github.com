@@ -188,26 +188,238 @@
 
 <div class="row">
   <div class="span12">
-    <h2 id="methods-of-chaplinsyncmachine">Methods of <code>Chaplin.SyncMachine</code></h2>
+    <p>The  <code>Chaplin.SyncMachine</code> is a <a href="http://en.wikipedia.org/wiki/Finite-state_machine">finite-state machine</a> for synchronization of models/collections. There are three states in which a model or collection can be in; unsynced, syncing, and synced. When a state transition (unsynced, syncing, synced, and syncStateChange) occurs Backbone events are called on the model or collection.</p>
 
-<h3 id="method1arg1-optionalarg-args">method1(arg1, [optional_arg], [*args])</h3>
-<p>Lorem</p>
+<h2 id="methods-of-chaplinsyncmachine">Methods of <code>Chaplin.SyncMachine</code></h2>
+
+<p><a name="syncState"></a></p>
+
+<h3 id="syncstate">syncState</h3>
+
+<p>Returns the current synchronization state of the machine.</p>
 
 <hr />
 
-<h3 id="method2">method2()</h3>
-<p>Lorem</p>
+<p><a name="isUnsynced"></a></p>
+
+<h3 id="isunsynced">isUnsynced</h3>
+
+<p>Returns a boolean to determine if model or collection is unsynced.</p>
+
+<hr />
+
+<p><a name="isSynced"></a></p>
+
+<h3 id="issynced">isSynced</h3>
+
+<p>Returns a boolean to determine if model or collection is synced.</p>
+
+<hr />
+
+<p><a name="isSyncing"></a></p>
+
+<h3 id="issyncing">isSyncing</h3>
+
+<p>Returns a boolean to determine if model or collection is currently syncing.</p>
+
+<hr />
+
+<p><a name="unsync"></a></p>
+
+<h3 id="unsync">unsync</h3>
+
+<p>Sets the state machine’s state to <code>unsynced</code> then triggers any events listening for the <code>unsynced</code> and <code>syncStateChanged</code> events.</p>
+
+<hr />
+
+<p><a name="beginSync"></a></p>
+
+<h3 id="beginsync">beginSync</h3>
+
+<p>Sets the state machine’s state to <code>syncing</code> then triggers any events listening for the <code>syncing</code> and <code>syncStateChanged</code> events.</p>
+
+<hr />
+
+<p><a name="beginSync"></a></p>
+
+<h3 id="finishsync">finishSync</h3>
+
+<p>Sets the state machine’s state to <code>synced</code> then triggers any events listening for the <code>synced</code> and <code>syncStateChanged</code> events.</p>
+
+<hr />
+
+<p><a name="abortSync"></a></p>
+
+<h3 id="abortsync">abortSync</h3>
+
+<p>Sets state machine’s state back to the previous state if the state machine is in the <code>syncing</code> state. Then triggers any events listening for the previous state and <code>syncStateChanged</code> events.</p>
 
 <h2 id="usage">Usage</h2>
 
+<p>The <code>Chaplin.SyncMachine</code> is a dependency of <code>Chaplin.Model</code> and <code>Chaplin.Collection</code> and should be used for complex synchronization of models and collections.</p>
+
+<pre><code class="coffeescript">
+    define [
+      'chaplin'
+      'models/post' # Post model
+    ], (Chaplin.Collection, Post) -&gt;
+
+      class Posts extends Chaplin.Collection
+
+        model: Post
+
+        initialize: -&gt;
+          super
+
+          # Initialize the SyncMachine
+          @initSyncMachine()
+
+          # Will be called on every state change
+          @syncStateChange announce
+
+          fetch()
+
+        # Custom fetch method which warrents
+        # the sync machine
+        fetch: =&gt;
+
+          #Set the machine into `syncing` state
+          @beginSync()
+
+          # Do something interesting like calling
+          # a 3rd party service
+          $.get 'http://some-service.com/posts', @processPosts
+
+        processPosts: (response) =&gt;
+          # Exit if for some reason this collection was
+          # disposed prior to the response
+          return if @disposed
+
+          # Update the collection
+          @reset(if response and response.data then response.data else [])
+
+          # Set the machine into `synced` state 
+          @finishSync()
+
+        announce: =&gt;
+          console.debug 'state changed'
+</code></pre>
+
 <h2 id="dependencies">Dependencies</h2>
-<ul>
-  <li>``</li>
-  <li>``</li>
-</ul>
+
+<p>No dependencies.</p>
 
 <h2 id="code">Code</h2>
 <pre><code class="coffeescript">
+define [
+  'underscore',
+  'backbone',
+  'chaplin/lib/utils'
+  'chaplin/lib/subscriber'
+  'chaplin/lib/sync_machine'
+], (_, Backbone, utils, Subscriber, SyncMachine) -&gt;
+  'use strict'
+
+  class Model extends Backbone.Model
+
+    # Mixin a Subscriber
+    _(@prototype).extend Subscriber
+
+    # Mixin a Deferred
+    initDeferred: -&gt;
+      _(this).extend $.Deferred()
+
+    # Mixin a synchronization state machine
+    initSyncMachine: -&gt;
+      _(this).extend SyncMachine
+
+    # This method is used to get the attributes for the view template
+    # and might be overwritten by decorators which cannot create a
+    # proper `attributes` getter due to ECMAScript 3 limits.
+    getAttributes: -&gt;
+      @attributes
+
+    # Private helper function for serializing attributes recursively,
+    # creating objects which delegate to the original attributes
+    # when a property needs to be overwritten.
+    serializeAttributes = (model, attributes, modelStack) -&gt;
+      # Create a delegator on initial call
+      unless modelStack
+        delegator = utils.beget attributes
+        modelStack = [model]
+      else
+        # Add model to stack
+        modelStack.push model
+      # Map model/collection to their attributes
+      for key, value of attributes
+        if value instanceof Model
+          # Don’t change the original attribute, create a property
+          # on the delegator which shadows the original attribute
+          delegator ?= utils.beget attributes
+          delegator[key] = if value is model or value in modelStack
+            # Nullify circular references
+            null
+          else
+            # Serialize recursively
+            serializeAttributes(
+              value, value.getAttributes(), modelStack
+            )
+        else if value instanceof Backbone.Collection
+          delegator ?= utils.beget attributes
+          delegator[key] = for item in value.models
+            serializeAttributes(
+              item, item.getAttributes(), modelStack
+            )
+
+      # Remove model from stack
+      modelStack.pop()
+      # Return the delegator if it was created, otherwise the plain attributes
+      delegator or attributes
+
+    # Return an object which delegates to the attributes
+    # (i.e. an object which has the attributes as prototype)
+    # so primitive values might be added and altered safely.
+    # Map models to their attributes, recursively.
+    serialize: (model) -&gt;
+      serializeAttributes this, @getAttributes()
+
+    # Disposal
+    # --------
+
+    disposed: false
+
+    dispose: -&gt;
+      return if @disposed
+
+      # Fire an event to notify associated collections and views
+      @trigger 'dispose', this
+
+      # Unbind all global event handlers
+      @unsubscribeAllEvents()
+
+      # Remove all event handlers on this module
+      @off()
+
+      # If the model is a Deferred, reject it
+      # This does nothing if it was resolved before
+      @reject?()
+
+      # Remove the collection reference, internal attribute hashes
+      # and event handlers
+      properties = [
+        'collection',
+        'attributes', 'changed'
+        '_escapedAttributes', '_previousAttributes',
+        '_silent', '_pending',
+        '_callbacks'
+      ]
+      delete this[prop] for prop in properties
+
+      # Finished
+      @disposed = true
+
+      # You’re frozen when your heart’s not open
+      Object.freeze? this
 </code></pre>
 
   </div>

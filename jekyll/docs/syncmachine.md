@@ -72,7 +72,7 @@ Sets state machine's state back to the previous state if the state machine is in
 
 ## Usage
 
-The `Chaplin.SyncMachine` is a dependency of `Chaplin.Model` and `Chaplin.Collection` and should be used for complex synchronization of models and collections.
+The `Chaplin.SyncMachine` is a dependency of `Chaplin.Model` and `Chaplin.Collection` and should be used for complex synchronization of models and collections.  An example of this would be using a 3rd party.
 
 <pre><code class="coffeescript">
     define [

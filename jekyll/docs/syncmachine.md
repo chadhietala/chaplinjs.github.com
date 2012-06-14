@@ -70,6 +70,74 @@ Sets the state machine's state to `synced` then triggers any events listening fo
 
 Sets state machine's state back to the previous state if the state machine is in the `syncing` state. Then triggers any events listening for the previous state and `syncStateChanged` events.
 
+-------------------
+
+<a name="unsynced"></a>
+
+### unsynced([callback], [context=this])
+
+Unsynced is a convience method which will execute a callback in a specified context whenever the state machine enters into the `unsynced` state.
+
+<ul class="arguments">
+  <li>
+    <strong>callback</strong>: a function to be called when the `unsynced` event occurs
+  </li>
+  <li>
+    <strong>context</strong>: the context in which the callback should execute in. Defaults to `this`.
+  </li>
+</ul>
+
+-------------------
+
+<a name="syncing"></a>
+
+### syncing([callback], [context=this])
+
+Syncing is a convience method which will execute a callback in a specified context whenever the state machine enters into the `syncing` state.
+
+<ul class="arguments">
+  <li>
+    <strong>callback</strong>: a function to be called when the `syncing` event occurs
+  </li>
+  <li>
+    <strong>context</strong>: the context in which the callback should execute in. Defaults to `this`.
+  </li>
+</ul>
+
+-------------------
+
+<a name="synced"></a>
+
+### synced([callback], [context=this])
+
+Synced is a convience method which will execute a callback in a specified context whenever the state machine enters into the `synced` state.
+
+<ul class="arguments">
+  <li>
+    <strong>callback</strong>: a function to be called when the `synced` event occurs
+  </li>
+  <li>
+    <strong>context</strong>: the context in which the callback should execute in. Defaults to `this`.
+  </li>
+</ul>
+
+-------------------
+
+<a name="syncStateChange"></a>
+
+### syncStateChange([callback], [context=this])
+
+SyncStateChange is a convience method which will execute a callback in a specified context whenever the state machine changes state.
+
+<ul class="arguments">
+  <li>
+    <strong>callback</strong>: a function to be called when the state of machine occurs
+  </li>
+  <li>
+    <strong>context</strong>: the context in which the callback should execute in. Defaults to `this`.
+  </li>
+</ul>
+
 ## Usage
 
 The `Chaplin.SyncMachine` is a dependency of `Chaplin.Model` and `Chaplin.Collection` and should be used for complex synchronization of models and collections.  An example of this would be using a 3rd party. 

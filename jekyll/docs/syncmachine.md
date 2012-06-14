@@ -76,7 +76,7 @@ Sets state machine's state back to the previous state if the state machine is in
 
 ### unsynced([callback], [context=this])
 
-Unsynced is a convience method which will execute a callback in a specified context whenever the state machine enters into the `unsynced` state.
+Unsynced is a convenience method which will execute a callback in a specified context whenever the state machine enters into the `unsynced` state.
 
 <ul class="arguments">
   <li>
@@ -93,7 +93,7 @@ Unsynced is a convience method which will execute a callback in a specified cont
 
 ### syncing([callback], [context=this])
 
-Syncing is a convience method which will execute a callback in a specified context whenever the state machine enters into the `syncing` state.
+Syncing is a convenience method which will execute a callback in a specified context whenever the state machine enters into the `syncing` state.
 
 <ul class="arguments">
   <li>
@@ -110,7 +110,7 @@ Syncing is a convience method which will execute a callback in a specified conte
 
 ### synced([callback], [context=this])
 
-Synced is a convience method which will execute a callback in a specified context whenever the state machine enters into the `synced` state.
+Synced is a convenience method which will execute a callback in a specified context whenever the state machine enters into the `synced` state.
 
 <ul class="arguments">
   <li>
@@ -127,7 +127,7 @@ Synced is a convience method which will execute a callback in a specified contex
 
 ### syncStateChange([callback], [context=this])
 
-SyncStateChange is a convience method which will execute a callback in a specified context whenever the state machine changes state.
+SyncStateChange is a convenience method which will execute a callback in a specified context whenever the state machine changes state.
 
 <ul class="arguments">
   <li>

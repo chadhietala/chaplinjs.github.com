@@ -10,7 +10,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>License</title>
+    <title>Chaplin.support</title>
     
     <meta name="author" content="">
 
@@ -193,36 +193,55 @@
 
       <div class="content">
         <div class="page-header">
-  <h1>License  <small>How you can use Chaplin</small></h1>
+  <h1>Chaplin.support  <small> - API documentation</small></h1>
 
   
 </div>
 
 <div class="row">
   <div class="span12">
-    <p>Chaplin is free and Open Source under the simple and permissive MIT license:</p>
+    <p>Currently <code>Chaplin.support</code> only offers feature detection for <code>defineProperty</code>.</p>
 
-<p>Copyright (C) 2012 Moviepilot and the Chaplin contributors
-http://moviepilot.com/
-https://github.com/chaplinjs/chaplin/graphs/contributors</p>
+<h2 id="methods-of-chaplinsupport">Methods of <code>Chaplin.support</code></h2>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the “Software”), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+<hr />
 
-<p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p>
+<p><a name="propertyDescriptors"></a></p>
 
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</p>
+<h3 id="propertydescriptors">propertyDescriptors</h3>
+
+<p>Determines if <code>Object.defineProperty</code> is supported. It’s important to note that IE8 has an implementation of <code>Object.defineProperty</code> however the method can only be used on DOM objects.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Support is used for feature detection and will return a boolean weather or not eh feature is detected.</p>
+
+<h2 id="code">Code</h2>
+
+<pre><code class="coffeescript">
+define -&gt;
+  'use strict'
+
+  # Feature detection
+  # -----------------
+
+  support =
+
+    # Test for defineProperty support
+    # (IE 8 knows the method but will throw an exception)
+    propertyDescriptors: do -&gt;
+      unless typeof Object.defineProperty is 'function' and
+        typeof Object.defineProperties is 'function'
+          return false
+      try
+        o = {}
+        Object.defineProperty o, 'foo', value: 'bar'
+        return o.foo is 'bar'
+      catch error
+        return false
+
+  support
+</code></pre>
 
   </div>
 </div>

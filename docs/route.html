@@ -1,0 +1,497 @@
+
+  
+  
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Chaplin.Route</title>
+    
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Code highlighting -->
+    <link rel="stylesheet" href="/assets/css/github.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/assets/javascript/highlight.pack.js"></script>
+    <script>
+      $(function() {
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+      });
+    </script>
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Chaplin</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+    	
+    	<li><a href="/docs/index.html">Docs</a></li>
+    	
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+    	
+    	<li><a href="/pages/authors.html">Authors</a></li>
+    	
+    
+  
+
+  
+    
+    	
+    	<li><a href="/pages/changelogs.html">Changelogs</a></li>
+    	
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+    	
+    	<li><a href="/pages/manifesto.html">Manifesto</a></li>
+    	
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+  <h1>Chaplin.Route  <small> - API documentation</small></h1>
+
+  
+</div>
+
+<div class="row">
+  <div class="span12">
+    <p>The <code>Chaplin Route</code> is used by <code>Chaplin.Router</code> to generate regular expressions and extract pramaters from a given pattern.</p>
+
+<h2 id="methods-of-chaplinroute">Methods of <code>Chaplin.Route</code></h2>
+
+<p><a name="createRegExp"></a></p>
+
+<h3 id="createregexp">createRegExp</h3>
+
+<p>Creates the actual regular expression that Backbone.History#LoadUrl uses to determine if the current url is a match.</p>
+
+<hr />
+
+<p><a name="addParamName"></a></p>
+
+<h3 id="addparamnamematch-paramname">addParamName([match], [paramName])</h3>
+
+<p>Determines if the pattern passed is a reserved named, if not than it is added to the <code>@paramsName</code> object and returns <code>([^\/\?]+)</code> to do a replacement for the character class.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>match</strong>: the parameter with the colon `:user`
+  </li>
+  <li>
+    <strong>paramName</strong>: the parameter with the colon stripped `user`
+  </li>
+</ul>
+
+<hr />
+
+<p><a name="test"></a></p>
+
+<h3 id="testpath">test([path])</h3>
+
+<p>Tests if the route matches a path and applies any parameter constraints.  This is called by Backbone.History#Loadurl.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>path</strong>: a relative path to check against
+  </li>
+</ul>
+
+<hr />
+
+<p><a name="handler"></a></p>
+
+<h3 id="handlerpath-options">handler([path], [options])</h3>
+
+<p>The handler is called by Backbone.History when the route is matched.  It is also called by <a href="/docs/router.html#routepath">Router#route</a> and passes <code>changeURL: true</code> as an option.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>path</strong>: the matched path
+  </li>
+  <li>
+    <strong>options</strong>: an optional object
+  </li>
+</ul>
+
+<hr />
+
+<p><a name="buildParams"></a></p>
+
+<h3 id="buildparamspath-options">buildParams([path], [options])</h3>
+
+<p>Creates a proper Rails-like params hash, not an array like Backbone <code>matches</code> and <code>additionalParams</code> arguments are optional.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>path</strong>: the matched URL path
+  </li>
+  <li>
+    <strong>options</strong>: an optional object
+  </li>
+</ul>
+
+<hr />
+
+<p><a name="extractParams"></a></p>
+
+<h3 id="extractparamspath">extractParams([path])</h3>
+
+<p>Extracts the named parameters from the URL path.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>path</strong>: the URL path
+  </li>
+</ul>
+
+<hr />
+
+<p><a name="extractQueryParams"></a></p>
+
+<h3 id="extractqueryparamspath">extractQueryParams([path])</h3>
+
+<p>Extracts the parameters from the query string.</p>
+
+<ul class="arguments">
+  <li>
+    <strong>path</strong>: the URL path
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="usage">Usage</h2>
+
+<p>A new instance of <code>Chaplin.Route</code> is created for each route in the routes file of your application.  This occurs when the <a href="/docs/router.html#matchpattern-target-options">match method</a> of <code>Chaplin.Router</code> is called. The actual routes file should be in the root of your project along with your main application bootstrapper file.</p>
+
+<p>The routes file is basically a module that returns an anonymous function in which the <a href="/docs/router.html#matchpattern-target-options">match method</a> is passed in as an argument.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<ul>
+  <li><code>underscore</code></li>
+  <li><code>backbone</code></li>
+  <li><code>chaplin/mediator</code></li>
+  <li><code>chaplin/lib/subscriber</code></li>
+  <li><code>chaplin/controllers/controller</code></li>
+</ul>
+
+<h2 id="code">Code</h2>
+
+<pre><code class="coffeescript">
+define [
+  'underscore'
+  'backbone'
+  'chaplin/mediator'
+  'chaplin/controllers/controller'
+], (_, Backbone, mediator, Controller) -&gt;
+  'use strict'
+
+  class Route
+
+    # Borrow the static extend method from Backbone
+    @extend = Backbone.Model.extend
+
+    reservedParams = ['path', 'changeURL']
+    # Taken from Backbone.Router
+    escapeRegExp = /[-[\]{}()+?.,\\^$|#\s]/g
+
+    queryStringFieldSeparator = '&amp;'
+    queryStringValueSeparator = '='
+
+    # Create a route for a URL pattern and a controller action
+    # e.g. new Route '/users/:id', 'users#show'
+    constructor: (pattern, target, @options = {}) -&gt;
+      # Save the raw pattern
+      @pattern = pattern
+
+      # Separate target into controller and controller action
+      [@controller, @action] = target.split('#')
+
+      # Check if the action is a reserved name
+      if _(Controller.prototype).has @action
+        throw new Error 'Route: You should not use existing controller properties as action names'
+
+      @createRegExp()
+
+    createRegExp: -&gt;
+      if _.isRegExp(@pattern)
+        @regExp = @pattern
+        return
+
+      pattern = @pattern
+        # Escape magic characters
+        .replace(escapeRegExp, '\\$&amp;')
+        # Replace named parameters, collecting their names
+        .replace(/:(\w+)/g, @addParamName)
+
+      # Create the actual regular expression
+      # Match until the end of the URL or the begin of query string
+      @regExp = ///^#{pattern}(?=\?|$)///
+
+    addParamName: (match, paramName) =&gt;
+      @paramNames ?= []
+      # Test if parameter name is reserved
+      if _(reservedParams).include(paramName)
+        throw new Error "Route#addParamName: parameter name #{paramName} is reserved"
+      # Save parameter name
+      @paramNames.push paramName
+      # Replace with a character class
+      '([^\/\?]+)'
+
+    # Test if the route matches to a path (called by Backbone.History#loadUrl)
+    test: (path) -&gt;
+      # Test the main RegExp
+      matched = @regExp.test path
+      return false unless matched
+
+      # Apply the parameter constraints
+      constraints = @options.constraints
+      if constraints
+        params = @extractParams path
+        for own name, constraint of constraints
+          unless constraint.test(params[name])
+            return false
+
+      return true
+
+    # The handler which is called by Backbone.History when the route matched.
+    # It is also called by Router#follow which might pass options
+    handler: (path, options) =&gt;
+      # Build params hash
+      params = @buildParams path, options
+
+      # Publish a global matchRoute event passing the route and the params
+      mediator.publish 'matchRoute', this, params
+
+    # Create a proper Rails-like params hash, not an array like Backbone
+    # `matches` and `additionalParams` arguments are optional
+    buildParams: (path, options) -&gt;
+      params = {}
+
+      # Add params from query string
+      queryParams = @extractQueryParams path
+      _(params).extend queryParams
+
+      # Add named params from pattern matches
+      patternParams = @extractParams path
+      _(params).extend patternParams
+
+      # Add additional params from options
+      # (they might overwrite params extracted from URL)
+      _(params).extend @options.params
+
+      # Add a `changeURL` param whether to change the URL after routing
+      # Defaults to false unless explicitly set in options
+      params.changeURL = Boolean(options and options.changeURL)
+
+      # Add a `path  param with the whole path match
+      params.path = path
+
+      params
+
+    # Extract named parameters from the URL path
+    extractParams: (path) -&gt;
+      params = {}
+
+      # Apply the regular expression
+      matches = @regExp.exec path
+
+      # Fill the hash using the paramNames and the matches
+      for match, index in matches.slice(1)
+        paramName = if @paramNames then @paramNames[index] else index
+        params[paramName] = match
+
+      params
+
+    # Extract parameters from the query string
+    extractQueryParams: (path) -&gt;
+      params = {}
+
+      regExp = /\?(.+?)(?=#|$)/
+      matches = regExp.exec path
+      return params unless matches
+
+      queryString = matches[1]
+      pairs = queryString.split queryStringFieldSeparator
+      for pair in pairs
+        continue unless pair.length
+        [field, value] = pair.split queryStringValueSeparator
+        continue unless field.length
+        field = decodeURIComponent field
+        value = decodeURIComponent value
+        current = params[field]
+        if current
+          # Handle multiple params with same name:
+          # Aggregate them in an array
+          if current.push
+            # Add the existing array
+            current.push value
+          else
+            # Create a new array
+            params[field] = [current, value]
+        else
+          params[field] = value
+
+      params
+</code></pre>
+
+  </div>
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy; Chaplin 2011 - 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+  </body>
+</html>

@@ -20,6 +20,10 @@ Determines if `Object.defineProperty` is supported. It's important to note that 
 
 Support is used for feature detection and will return a boolean weather or not eh feature is detected.
 
+## Dependencies
+
+No dependencies.
+
 ## Code
 
 <pre><code class="coffeescript">

@@ -17,7 +17,6 @@ group: navigation
 * [Mediator](/docs/mediator.html)
 * [Dispatcher](/docs/dispatcher.html)
 * [Application](/docs/application.html)
-* [Router](/docs/router.html)
 
 ### MVC
 * [Controller](/docs/controller.html)
@@ -30,6 +29,10 @@ group: navigation
 ### Libs
 * [Subscriber](/docs/subscriber.html)
 * [SyncMachine](/docs/syncmachine.html)
+* [Router](/docs/router.html)
+* [Route](/docs/route.html)
+* [Support](/docs/support.html)
+* [Utils](/docs/utils.html)
 
 
 
